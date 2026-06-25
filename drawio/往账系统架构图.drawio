@@ -1,0 +1,237 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Draw.io" version="21.0.0">
+  <diagram name="往账系统架构图" id="ibps-out">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 标题 -->
+        <mxCell id="title" value="超网往账系统架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 左侧泳道：鄞州(10网段) -->
+        <mxCell id="yz-lane" value="鄞州数据中心（10网段）" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;swimlaneLine=0" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="840" height="980" as="geometry" />
+        </mxCell>
+
+        <!-- 右侧泳道：江北(20网段) -->
+        <mxCell id="jb-lane" value="江北数据中心（20网段）" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;swimlaneLine=0" vertex="1" parent="1">
+          <mxGeometry x="910" y="80" width="840" height="980" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 鄞州侧(10网段) 从上到下 ====== -->
+
+        <!-- 第一层：流量入口（跨双中心） -->
+        <mxCell id="layer1-bg" value="【第一层】流量入口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="115" width="1680" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend" value="&lt;b&gt;行内前端渠道&lt;/b&gt;&#xa;(手机银行/网银/柜面等)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="120" width="300" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 第二层：渠道网关层 -->
+        <mxCell id="layer2-yz-bg" value="【第二层】渠道网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="820" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw" value="&lt;b&gt;渠道网关&lt;/b&gt;&#xa;10.164.3.19/21/22/23&#xa;────────────&#xa;[监控: QPS/RT/错误率/&#xa;连接数/JVM内存]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="360" y="220" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer2-jb-bg" value="【第二层】渠道网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="920" y="200" width="820" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw" value="&lt;b&gt;渠道网关&lt;/b&gt;&#xa;20.164.3.19/21/22/23&#xa;────────────&#xa;[监控: QPS/RT/错误率/&#xa;连接数/JVM内存]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="1230" y="220" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 渠道网关分叉说明 -->
+        <mxCell id="fork-note" value="↓ 分流 ↓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="440" y="315" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="fork-note2" value="↓ 分流 ↓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="1300" y="315" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 第三层：应用处理层 — 鄞州内部 老GAPS(左) / 新Java(右) 同级并列 -->
+        <mxCell id="layer3-yz-bg" value="【第三层】应用处理层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;strokeWidth=2;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="820" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州-老GAPS -->
+        <mxCell id="layer3-yz-old-bg" value="老架构 - GAPS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="70" y="380" width="390" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps" value="&lt;b&gt;老GAPS应用&lt;/b&gt;&#xa;10.99.131.130/131&#xa;────────────&#xa;[监控: 交易成功率/&#xa;处理耗时/队列深度]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="165" y="430" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州-新Java -->
+        <mxCell id="layer3-yz-new-bg" value="新架构 - Java微服务 (建设中)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;opacity=25;dashed=1;dashPattern=8 8;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="480" y="380" width="390" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java" value="&lt;b&gt;新Java应用&lt;/b&gt;&#xa;10.164.4.25/26/27&#xa;────────────&#xa;[监控: Pod CPU/内存/&#xa;接口RT/线程池/GC]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="575" y="430" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 第三层：应用处理层 — 江北内部 老GAPS(左) / 新Java(右) 同级并列 -->
+        <mxCell id="layer3-jb-bg" value="【第三层】应用处理层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=2;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="920" y="360" width="820" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- 江北-老GAPS -->
+        <mxCell id="layer3-jb-old-bg" value="老架构 - GAPS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="930" y="380" width="390" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps" value="&lt;b&gt;老GAPS应用&lt;/b&gt;&#xa;20.99.131.130/131&#xa;────────────&#xa;[监控: 交易成功率/&#xa;处理耗时/队列深度]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="1025" y="430" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 江北-新Java -->
+        <mxCell id="layer3-jb-new-bg" value="新架构 - Java微服务 (建设中)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;opacity=25;dashed=1;dashPattern=8 8;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1340" y="380" width="390" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java" value="&lt;b&gt;新Java应用&lt;/b&gt;&#xa;20.164.4.25/26/27&#xa;────────────&#xa;[监控: Pod CPU/内存/&#xa;接口RT/线程池/GC]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="1435" y="430" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 第四层：人行网关层 -->
+        <mxCell id="layer4-yz-bg" value="【第四层】人行网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="630" width="820" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-pboc-gw" value="&lt;b&gt;人行网关&lt;/b&gt;&#xa;10.164.3.19/21/22/23&#xa;────────────&#xa;[监控: MQ堆积量/&#xa;发送成功率/延迟]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="360" y="650" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer4-jb-bg" value="【第四层】人行网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="920" y="630" width="820" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-pboc-gw" value="&lt;b&gt;人行网关&lt;/b&gt;&#xa;20.164.3.19/21/22/23&#xa;────────────&#xa;[监控: MQ堆积量/&#xa;发送成功率/延迟]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="1230" y="650" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 第五层：行内前置机层 -->
+        <mxCell id="layer5-yz-bg" value="【第五层】行内前置机层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="790" width="820" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-preq" value="&lt;b&gt;行内前置机&lt;/b&gt;&#xa;10.99.164.193/197&#xa;────────────&#xa;[监控: MQ队列深度/&#xa;磁盘IO/网络吞吐]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="360" y="810" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer5-jb-bg" value="【第五层】行内前置机层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="920" y="790" width="820" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-preq" value="&lt;b&gt;行内前置机&lt;/b&gt;&#xa;20.99.164.193/197&#xa;────────────&#xa;[监控: MQ队列深度/&#xa;磁盘IO/网络吞吐]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center" vertex="1" parent="1">
+          <mxGeometry x="1230" y="810" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- 第六层：人行出口 -->
+        <mxCell id="layer6-bg" value="【第六层】人行出口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#cc0000;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="950" width="1680" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pboc-preq" value="&lt;b&gt;人行前置机&lt;/b&gt;&#xa;(人行端入口)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#cc0000;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="975" width="300" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 连线 ====== -->
+        <!-- 前端 → 渠道网关 -->
+        <mxCell id="e1" value="ESB&#xa;app.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="frontend" target="yz-chl-gw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="ESB&#xa;app.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="frontend" target="jb-chl-gw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 渠道网关 → 老GAPS (同侧左分支) -->
+        <mxCell id="e3" value="TCP&#xa;app-normal.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="yz-chl-gw" target="yz-gaps">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="350" />
+              <mxPoint x="265" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="TCP&#xa;app-normal.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="jb-chl-gw" target="jb-gaps">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="350" />
+              <mxPoint x="1125" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 渠道网关 → 新Java (同侧右分支，虚线) -->
+        <mxCell id="e5" value="星云路由&#xa;ibps-app-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="yz-chl-gw" target="yz-java">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="350" />
+              <mxPoint x="675" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="星云路由&#xa;ibps-app-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="jb-chl-gw" target="jb-java">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="350" />
+              <mxPoint x="1535" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 老GAPS → 人行网关 (同侧) -->
+        <mxCell id="e7" value="TCP&#xa;app.ibps.nb:12222" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="yz-gaps" target="yz-pboc-gw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="265" y="620" />
+              <mxPoint x="460" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="TCP&#xa;app.ibps.nb:12222" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="jb-gaps" target="jb-pboc-gw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1125" y="620" />
+              <mxPoint x="1330" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 新Java → 人行网关 (同侧，虚线) -->
+        <mxCell id="e9" value="星云发现&#xa;ibps-pboc-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="yz-java" target="yz-pboc-gw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="675" y="620" />
+              <mxPoint x="460" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="星云发现&#xa;ibps-pboc-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="jb-java" target="jb-pboc-gw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1535" y="620" />
+              <mxPoint x="1330" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 人行网关 → 行内前置机 (同侧) -->
+        <mxCell id="e11" value="TCP探测路由&#xa;写入MQ (端口1424)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="yz-pboc-gw" target="yz-preq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="TCP探测路由&#xa;写入MQ (端口1424)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="jb-pboc-gw" target="jb-preq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 行内前置机 → 人行前置机 -->
+        <mxCell id="e13" value="IBM MQ&#xa;报文流转" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#cc0000;fontSize=9;labelBackgroundColor=#ffffff;fontStyle=1" edge="1" parent="1" source="yz-preq" target="pboc-preq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="IBM MQ&#xa;报文流转" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#cc0000;fontSize=9;labelBackgroundColor=#ffffff;fontStyle=1" edge="1" parent="1" source="jb-preq" target="pboc-preq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
