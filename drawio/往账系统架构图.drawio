@@ -1,235 +1,785 @@
 <mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Draw.io" version="21.0.0">
-  <diagram name="往账系统架构图" id="ibps-out">
-    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" background="#ffffff">
+  <diagram name="往账系统架构图" id="ibps-out-new">
+    <mxGraphModel dx="2500" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2700" pageHeight="1600" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- 标题 -->
-        <mxCell id="title" value="超网往账系统架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="700" y="20" width="400" height="40" as="geometry" />
+        <!-- ====== 任务1.1：标题 + 图例 ====== -->
+
+        <!-- 主标题 -->
+        <mxCell id="title" value="超网往账系统架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="980" y="20" width="500" height="40" as="geometry" />
         </mxCell>
 
-        <!-- 左侧泳道：鄞州(10网段) -->
-        <mxCell id="yz-lane" value="鄞州数据中心（10网段）" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;swimlaneLine=0" vertex="1" parent="1">
-          <mxGeometry x="50" y="80" width="840" height="980" as="geometry" />
+        <!-- 图例背景框 -->
+        <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;opacity=90" vertex="1" parent="1">
+          <mxGeometry x="2480" y="20" width="230" height="300" as="geometry" />
         </mxCell>
 
-        <!-- 右侧泳道：江北(20网段) -->
-        <mxCell id="jb-lane" value="江北数据中心（20网段）" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;swimlaneLine=0" vertex="1" parent="1">
-          <mxGeometry x="910" y="80" width="840" height="980" as="geometry" />
+        <!-- 图例标题 -->
+        <mxCell id="legend-title" value="&lt;b&gt;监控指标图例&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2490" y="25" width="210" height="20" as="geometry" />
         </mxCell>
 
-        <!-- ====== 鄞州侧(10网段) 从上到下 ====== -->
+        <!-- IP框结构图例 -->
+        <mxCell id="legend-struct-title" value="IP框结构：" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2500" y="50" width="100" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- 图例 - IP框 -->
+        <mxCell id="legend-demo-ip" value="10.164.3.19" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=9;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="2500" y="70" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 图例 - 指标框 -->
+        <mxCell id="legend-demo-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:12px;font-weight:bold;line-height:1&quot;&gt;1250&lt;/span&gt;&lt;span style=&quot;font-size:7px;color:#888;margin-top:1px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=8;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2500" y="90" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-demo-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:12px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:7px;color:#888;margin-top:1px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=8;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2600" y="90" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-demo-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:12px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:7px;color:#888;margin-top:1px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=8;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2500" y="118" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-demo-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:12px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:7px;color:#888;margin-top:1px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=8;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2600" y="118" width="100" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- 指标说明 -->
+        <mxCell id="legend-metrics" value="左上: 交易量(笔)
+右上: 成功率(%)
+左下: 响应时间(ms)
+右下: 响应率(%)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="2500" y="150" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 颜色说明 -->
+        <mxCell id="legend-color-title" value="颜色规范：" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2500" y="200" width="100" height="15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-color1" value="&lt;font color=&quot;#b85450&quot;&gt;■&lt;/font&gt; 渠道网关/人行网关" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="2500" y="218" width="200" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-color2" value="&lt;font color=&quot;#666666&quot;&gt;■&lt;/font&gt; 老架构 GAPS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="2500" y="232" width="200" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-color3" value="&lt;font color=&quot;#82b366&quot;&gt;■&lt;/font&gt; 新架构 Java微服务" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="2500" y="246" width="200" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-color4" value="&lt;font color=&quot;#d79b00&quot;&gt;■&lt;/font&gt; 行内前置机" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="2500" y="260" width="200" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- 连线说明 -->
+        <mxCell id="legend-line-title" value="连线说明：" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2500" y="278" width="100" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line1" value="━━ TCP连接（实线）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#cc0000" vertex="1" parent="1">
+          <mxGeometry x="2500" y="293" width="200" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line2" value="┅┅ 星云路由（虚线）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="2500" y="305" width="200" height="12" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务1.2：双数据中心泳道 ====== -->
+
+        <!-- 鄞州数据中心泳道（左侧） -->
+        <mxCell id="yz-lane" value="鄞州数据中心（10网段）" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;swimlaneLine=0;rounded=0" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1190" height="1250" as="geometry" />
+        </mxCell>
+
+        <!-- 江北数据中心泳道（右侧） -->
+        <mxCell id="jb-lane" value="江北数据中心（20网段）" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;swimlaneLine=0;rounded=0" vertex="1" parent="1">
+          <mxGeometry x="1270" y="80" width="1190" height="1250" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务1.3：所有层背景框 ====== -->
 
         <!-- 第一层：流量入口（跨双中心） -->
-        <mxCell id="layer1-bg" value="【第一层】流量入口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="115" width="1680" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="frontend" value="&lt;b&gt;行内前端渠道&lt;/b&gt;&#xa;(手机银行/网银/柜面等)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="750" y="120" width="300" height="50" as="geometry" />
+        <mxCell id="layer1-bg" value="【第一层】流量入口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="125" width="2400" height="80" as="geometry" />
         </mxCell>
 
-        <!-- 第二层：渠道网关层 -->
-        <mxCell id="layer2-yz-bg" value="【第二层】渠道网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="200" width="820" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="yz-chl-gw" value="&lt;b&gt;渠道网关&lt;/b&gt;&#xa;10.164.3.19/21/22/23&#xa;────────────&#xa;[监控: QPS/RT/错误率/&#xa;连接数/JVM内存]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="360" y="220" width="200" height="90" as="geometry" />
+        <!-- 第二层：渠道网关层（鄞州） - 高度调整为180px -->
+        <mxCell id="layer2-yz-bg" value="【第二层】渠道网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="240" width="1180" height="180" as="geometry" />
         </mxCell>
 
-        <mxCell id="layer2-jb-bg" value="【第二层】渠道网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="920" y="200" width="820" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="jb-chl-gw" value="&lt;b&gt;渠道网关&lt;/b&gt;&#xa;20.164.3.19/21/22/23&#xa;────────────&#xa;[监控: QPS/RT/错误率/&#xa;连接数/JVM内存]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="1230" y="220" width="200" height="90" as="geometry" />
+        <!-- 第二层：渠道网关层（江北） - 高度调整为180px -->
+        <mxCell id="layer2-jb-bg" value="【第二层】渠道网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="240" width="1180" height="180" as="geometry" />
         </mxCell>
 
-        <!-- 渠道网关分叉说明 -->
-        <mxCell id="fork-note" value="↓ 分流 ↓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
-          <mxGeometry x="440" y="315" width="60" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="fork-note2" value="↓ 分流 ↓" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
-          <mxGeometry x="1300" y="315" width="60" height="20" as="geometry" />
-        </mxCell>
-
-        <!-- 第三层：应用处理层 — 鄞州内部 老GAPS(左) / 新Java(右) 同级并列 -->
+        <!-- 第三层：应用处理层（鄞州） -->
         <mxCell id="layer3-yz-bg" value="【第三层】应用处理层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;strokeWidth=2;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="360" width="820" height="240" as="geometry" />
+          <mxGeometry x="50" y="460" width="1180" height="250" as="geometry" />
         </mxCell>
 
-        <!-- 鄞州-老GAPS -->
-        <mxCell id="layer3-yz-old-bg" value="老架构 - GAPS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="70" y="380" width="390" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="yz-gaps" value="&lt;b&gt;老GAPS应用&lt;/b&gt;&#xa;10.99.131.130/131&#xa;────────────&#xa;[监控: 交易成功率/&#xa;处理耗时/队列深度]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="165" y="430" width="200" height="100" as="geometry" />
-        </mxCell>
-
-        <!-- 鄞州-新Java -->
-        <mxCell id="layer3-yz-new-bg" value="新架构 - Java微服务 (建设中)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;opacity=25;dashed=1;dashPattern=8 8;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="480" y="380" width="390" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="yz-java" value="&lt;b&gt;新Java应用&lt;/b&gt;&#xa;10.164.4.25/26/27&#xa;────────────&#xa;[监控: Pod CPU/内存/&#xa;接口RT/线程池/GC]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="575" y="430" width="200" height="100" as="geometry" />
-        </mxCell>
-
-        <!-- 第三层：应用处理层 — 江北内部 老GAPS(左) / 新Java(右) 同级并列 -->
+        <!-- 第三层：应用处理层（江北） -->
         <mxCell id="layer3-jb-bg" value="【第三层】应用处理层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=2;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="920" y="360" width="820" height="240" as="geometry" />
+          <mxGeometry x="1280" y="460" width="1180" height="250" as="geometry" />
         </mxCell>
 
-        <!-- 江北-老GAPS -->
-        <mxCell id="layer3-jb-old-bg" value="老架构 - GAPS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="930" y="380" width="390" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="jb-gaps" value="&lt;b&gt;老GAPS应用&lt;/b&gt;&#xa;20.99.131.130/131&#xa;────────────&#xa;[监控: 交易成功率/&#xa;处理耗时/队列深度]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="1025" y="430" width="200" height="100" as="geometry" />
+        <!-- 第三层：鄞州-老GAPS子区域 -->
+        <mxCell id="layer3-yz-old-bg" value="老架构 - GAPS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;opacity=40;align=left;verticalAlign=top;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="460" height="200" as="geometry" />
         </mxCell>
 
-        <!-- 江北-新Java -->
-        <mxCell id="layer3-jb-new-bg" value="新架构 - Java微服务 (建设中)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;opacity=25;dashed=1;dashPattern=8 8;align=left;verticalAlign=top;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="1340" y="380" width="390" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="jb-java" value="&lt;b&gt;新Java应用&lt;/b&gt;&#xa;20.164.4.25/26/27&#xa;────────────&#xa;[监控: Pod CPU/内存/&#xa;接口RT/线程池/GC]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="1435" y="430" width="200" height="100" as="geometry" />
+        <!-- 第三层：鄞州-新Java子区域 -->
+        <mxCell id="layer3-yz-new-bg" value="新架构 - Java微服务（建设中）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;opacity=40;dashed=1;dashPattern=8 8;align=left;verticalAlign=top;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="530" y="490" width="690" height="200" as="geometry" />
         </mxCell>
 
-        <!-- 第四层：人行网关层 -->
-        <mxCell id="layer4-yz-bg" value="【第四层】人行网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="630" width="820" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="yz-pboc-gw" value="&lt;b&gt;人行网关&lt;/b&gt;&#xa;10.164.3.19/21/22/23&#xa;────────────&#xa;[监控: MQ堆积量/&#xa;发送成功率/延迟]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="360" y="650" width="200" height="90" as="geometry" />
+        <!-- 第三层：江北-老GAPS子区域 -->
+        <mxCell id="layer3-jb-old-bg" value="老架构 - GAPS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;opacity=40;align=left;verticalAlign=top;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1290" y="490" width="460" height="200" as="geometry" />
         </mxCell>
 
-        <mxCell id="layer4-jb-bg" value="【第四层】人行网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="920" y="630" width="820" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="jb-pboc-gw" value="&lt;b&gt;人行网关&lt;/b&gt;&#xa;20.164.3.19/21/22/23&#xa;────────────&#xa;[监控: MQ堆积量/&#xa;发送成功率/延迟]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="1230" y="650" width="200" height="90" as="geometry" />
+        <!-- 第三层：江北-新Java子区域 -->
+        <mxCell id="layer3-jb-new-bg" value="新架构 - Java微服务（建设中）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;opacity=40;dashed=1;dashPattern=8 8;align=left;verticalAlign=top;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1760" y="490" width="690" height="200" as="geometry" />
         </mxCell>
 
-        <!-- 第五层：行内前置机层 -->
-        <mxCell id="layer5-yz-bg" value="【第五层】行内前置机层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="790" width="820" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="yz-preq" value="&lt;b&gt;行内前置机&lt;/b&gt;&#xa;10.99.164.193/197&#xa;────────────&#xa;[监控: MQ队列深度/&#xa;磁盘IO/网络吞吐]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="360" y="810" width="200" height="90" as="geometry" />
+        <!-- 第四层：人行网关层（鄞州） -->
+        <mxCell id="layer4-yz-bg" value="【第四层】人行网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="750" width="1180" height="180" as="geometry" />
         </mxCell>
 
-        <mxCell id="layer5-jb-bg" value="【第五层】行内前置机层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="920" y="790" width="820" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="jb-preq" value="&lt;b&gt;行内前置机&lt;/b&gt;&#xa;20.99.164.193/197&#xa;────────────&#xa;[监控: MQ队列深度/&#xa;磁盘IO/网络吞吐]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center" vertex="1" parent="1">
-          <mxGeometry x="1230" y="810" width="200" height="90" as="geometry" />
+        <!-- 第四层：人行网关层（江北） -->
+        <mxCell id="layer4-jb-bg" value="【第四层】人行网关层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="750" width="1180" height="180" as="geometry" />
         </mxCell>
 
-        <!-- 第六层：人行出口 -->
-        <mxCell id="layer6-bg" value="【第六层】人行出口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#cc0000;strokeWidth=2;opacity=25;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="950" width="1680" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="pboc-preq" value="&lt;b&gt;人行前置机&lt;/b&gt;&#xa;(人行端入口)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#cc0000;fontSize=13;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="750" y="975" width="300" height="50" as="geometry" />
+        <!-- 第五层：前置机层（鄞州） -->
+        <mxCell id="layer5-yz-bg" value="【第五层】前置机层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="970" width="1180" height="180" as="geometry" />
         </mxCell>
 
-        <!-- ====== 连线 ====== -->
-        <!-- 前端 → 渠道网关 -->
-        <mxCell id="e1" value="ESB&#xa;app.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="frontend" target="yz-chl-gw">
+        <!-- 第五层：前置机层（江北） -->
+        <mxCell id="layer5-jb-bg" value="【第五层】前置机层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="970" width="1180" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- 第六层：人行出口（跨双中心） -->
+        <mxCell id="layer6-bg" value="【第六层】人行出口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#cc0000;strokeWidth=2;opacity=30;align=left;verticalAlign=top;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="1190" width="2400" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务2.1：流量入口 ====== -->
+
+        <!-- 行内前端渠道（跨双中心，居中） -->
+        <mxCell id="frontend" value="&lt;b&gt;行内前端渠道&lt;/b&gt;&lt;br&gt;(手机银行/网银/柜面等)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1100" y="140" width="260" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务3.1：鄞州渠道网关（4台） ====== -->
+
+        <!-- 鄞州渠道网关 10.164.3.19 -->
+        <mxCell id="yz-chl-gw-19-ip" value="10.164.3.19" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="270" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-19-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="270" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-19-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="370" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-19-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="270" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-19-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="370" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州渠道网关 10.164.3.21 -->
+        <mxCell id="yz-chl-gw-21-ip" value="10.164.3.21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="490" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-21-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="490" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-21-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="590" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-21-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="490" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-21-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="590" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州渠道网关 10.164.3.22 -->
+        <mxCell id="yz-chl-gw-22-ip" value="10.164.3.22" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="710" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-22-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="710" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-22-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="810" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-22-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="710" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-22-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="810" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州渠道网关 10.164.3.23 -->
+        <mxCell id="yz-chl-gw-23-ip" value="10.164.3.23" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="930" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-23-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="930" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-23-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1030" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-23-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="930" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-chl-gw-23-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1030" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务3.2：江北渠道网关（4台） ====== -->
+
+        <!-- 江北渠道网关 20.164.3.19 -->
+        <mxCell id="jb-chl-gw-19-ip" value="20.164.3.19" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1490" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-19-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1490" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-19-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1590" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-19-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1490" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-19-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1590" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北渠道网关 20.164.3.21 -->
+        <mxCell id="jb-chl-gw-21-ip" value="20.164.3.21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1710" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-21-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1710" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-21-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1810" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-21-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1710" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-21-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1810" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北渠道网关 20.164.3.22 -->
+        <mxCell id="jb-chl-gw-22-ip" value="20.164.3.22" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1930" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-22-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1930" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-22-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2030" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-22-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1930" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-22-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2030" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北渠道网关 20.164.3.23 -->
+        <mxCell id="jb-chl-gw-23-ip" value="20.164.3.23" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="2150" y="260" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-23-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2150" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-23-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2250" y="302" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-23-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2150" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-chl-gw-23-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2250" y="357" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务4.1：鄞州老GAPS（2台） ====== -->
+
+        <!-- 鄞州老GAPS 10.99.131.130 -->
+        <mxCell id="yz-gaps-old-130-ip" value="10.99.131.130" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="70" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-130-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="70" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-130-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="170" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-130-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="70" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-130-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="170" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州老GAPS 10.99.131.131 -->
+        <mxCell id="yz-gaps-old-131-ip" value="10.99.131.131" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="280" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-131-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="280" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-131-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="380" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-131-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="280" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-gaps-old-131-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="380" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务4.2：鄞州新Java（3台） ====== -->
+
+        <!-- 鄞州新Java 10.164.4.25 -->
+        <mxCell id="yz-java-new-25-ip" value="10.164.4.25" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b8dcc8;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="560" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-25-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="560" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-25-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="660" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-25-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="560" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-25-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="660" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州新Java 10.164.4.26 -->
+        <mxCell id="yz-java-new-26-ip" value="10.164.4.26" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b8dcc8;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="780" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-26-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="780" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-26-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="880" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-26-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="780" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-26-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="880" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州新Java 10.164.4.27 -->
+        <mxCell id="yz-java-new-27-ip" value="10.164.4.27" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b8dcc8;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1000" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-27-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1000" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-27-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1100" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-27-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1000" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-java-new-27-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1100" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务4.3：江北老GAPS（2台） ====== -->
+
+        <!-- 江北老GAPS 20.99.131.130 -->
+        <mxCell id="jb-gaps-old-130-ip" value="20.99.131.130" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1300" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-130-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1300" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-130-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1400" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-130-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1300" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-130-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1400" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北老GAPS 20.99.131.131 -->
+        <mxCell id="jb-gaps-old-131-ip" value="20.99.131.131" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1510" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-131-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1510" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-131-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1610" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-131-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1510" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-gaps-old-131-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1610" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务4.4：江北新Java（3台） ====== -->
+
+        <!-- 江北新Java 20.164.4.25 -->
+        <mxCell id="jb-java-new-25-ip" value="20.164.4.25" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b8dcc8;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1790" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-25-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1790" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-25-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1890" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-25-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1790" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-25-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1890" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北新Java 20.164.4.26 -->
+        <mxCell id="jb-java-new-26-ip" value="20.164.4.26" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b8dcc8;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="2010" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-26-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2010" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-26-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2110" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-26-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2010" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-26-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2110" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北新Java 20.164.4.27 -->
+        <mxCell id="jb-java-new-27-ip" value="20.164.4.27" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b8dcc8;strokeColor=#82b366;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="2230" y="520" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-27-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2230" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-27-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2330" y="562" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-27-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2230" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-java-new-27-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2330" y="617" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务5.1：鄞州人行网关（4台） ====== -->
+
+        <!-- 鄞州人行网关 10.164.3.19 -->
+        <mxCell id="yz-hvb-gw-19-ip" value="10.164.3.19" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="270" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-19-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="270" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-19-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="370" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-19-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="270" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-19-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="370" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州人行网关 10.164.3.21 -->
+        <mxCell id="yz-hvb-gw-21-ip" value="10.164.3.21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="490" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-21-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="490" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-21-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="590" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-21-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="490" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-21-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="590" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州人行网关 10.164.3.22 -->
+        <mxCell id="yz-hvb-gw-22-ip" value="10.164.3.22" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="710" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-22-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="710" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-22-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="810" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-22-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="710" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-22-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="810" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州人行网关 10.164.3.23 -->
+        <mxCell id="yz-hvb-gw-23-ip" value="10.164.3.23" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="930" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-23-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="930" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-23-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1030" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-23-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="930" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-hvb-gw-23-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1030" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务5.2：江北人行网关（4台） ====== -->
+
+        <!-- 江北人行网关 20.164.3.19 -->
+        <mxCell id="jb-hvb-gw-19-ip" value="20.164.3.19" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1490" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-19-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1490" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-19-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1590" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-19-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1490" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-19-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1590" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北人行网关 20.164.3.21 -->
+        <mxCell id="jb-hvb-gw-21-ip" value="20.164.3.21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1710" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-21-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1710" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-21-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1810" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-21-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1710" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-21-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1810" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北人行网关 20.164.3.22 -->
+        <mxCell id="jb-hvb-gw-22-ip" value="20.164.3.22" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1930" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-22-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1930" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-22-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2030" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-22-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1930" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-22-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2030" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北人行网关 20.164.3.23 -->
+        <mxCell id="jb-hvb-gw-23-ip" value="20.164.3.23" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0b8b8;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="2150" y="770" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-23-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2150" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-23-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2250" y="812" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-23-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2150" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-hvb-gw-23-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="2250" y="867" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务6.1：鄞州前置机（2台） ====== -->
+
+        <!-- 鄞州前置机 10.99.164.193 -->
+        <mxCell id="yz-prec-193-ip" value="10.99.164.193" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0d0a0;strokeColor=#d79b00;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="420" y="990" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-193-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="420" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-193-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="520" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-193-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="420" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-193-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="520" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 鄞州前置机 10.99.164.197 -->
+        <mxCell id="yz-prec-197-ip" value="10.99.164.197" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0d0a0;strokeColor=#d79b00;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="670" y="990" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-197-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="670" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-197-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="770" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-197-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="670" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="yz-prec-197-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="770" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务6.2：江北前置机（2台） ====== -->
+
+        <!-- 江北前置机 20.99.164.193 -->
+        <mxCell id="jb-prec-193-ip" value="20.99.164.193" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0d0a0;strokeColor=#d79b00;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1640" y="990" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-193-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1640" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-193-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1740" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-193-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1640" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-193-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1740" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 江北前置机 20.99.164.197 -->
+        <mxCell id="jb-prec-197-ip" value="20.99.164.197" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0d0a0;strokeColor=#d79b00;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="1890" y="990" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-197-txn" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;1000&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;笔&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1890" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-197-succ" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;99.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1990" y="1032" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-197-rt" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;120&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;ms&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1890" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="jb-prec-197-resp" value="&lt;div style=&quot;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%&quot;&gt;&lt;span style=&quot;font-size:26px;font-weight:bold;line-height:1&quot;&gt;98.50&lt;/span&gt;&lt;span style=&quot;font-size:9px;color:#888;margin-top:2px&quot;&gt;%&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1990" y="1087" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务7.1：人行前置机（跨双中心） ====== -->
+
+        <!-- 人行前置机（居中，跨双中心） -->
+        <mxCell id="pbc-prec" value="&lt;b&gt;人行前置机&lt;/b&gt;&lt;br&gt;（国家处理中心 NPC）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#cc0000;fontSize=14;fontStyle=1;align=center;verticalAlign=middle" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1200" width="260" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务8.1：第一层 → 第二层 连线（流量入口 → 渠道网关，折线） ====== -->
+
+        <!-- 行内前端渠道 → 鄞州渠道网关区（ESB/星云路由 折线） -->
+        <mxCell id="conn-1-2-yz" value="&lt;b&gt;ESB/星云路由&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;dashed=1;dashPattern=8 8;fontSize=10;fontColor=#82b366;labelBackgroundColor=#ffffff;edgeStyle=orthogonalEdgeStyle;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" source="frontend" target="layer2-yz-bg" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e2" value="ESB&#xa;app.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="frontend" target="jb-chl-gw">
+
+        <!-- 行内前端渠道 → 江北渠道网关区（ESB/星云路由 折线） -->
+        <mxCell id="conn-1-2-jb" value="&lt;b&gt;ESB/星云路由&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;dashed=1;dashPattern=8 8;fontSize=10;fontColor=#82b366;labelBackgroundColor=#ffffff;edgeStyle=orthogonalEdgeStyle;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" source="frontend" target="layer2-jb-bg" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- 渠道网关 → 老GAPS (同侧左分支) -->
-        <mxCell id="e3" value="TCP&#xa;app-normal.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="yz-chl-gw" target="yz-gaps">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="460" y="350" />
-              <mxPoint x="265" y="350" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e4" value="TCP&#xa;app-normal.ibps.nb:12010" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="jb-chl-gw" target="jb-gaps">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1330" y="350" />
-              <mxPoint x="1125" y="350" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
+        <!-- ====== 任务8.2：第二层 → 第三层 连线（分拆：老架构 + 新架构） ====== -->
 
-        <!-- 渠道网关 → 新Java (同侧右分支，虚线) -->
-        <mxCell id="e5" value="星云路由&#xa;ibps-app-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="yz-chl-gw" target="yz-java">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="460" y="350" />
-              <mxPoint x="675" y="350" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e6" value="星云路由&#xa;ibps-app-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="jb-chl-gw" target="jb-java">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1330" y="350" />
-              <mxPoint x="1535" y="350" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- 老GAPS → 人行网关 (同侧) -->
-        <mxCell id="e7" value="TCP&#xa;app.ibps.nb:12222" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="yz-gaps" target="yz-pboc-gw">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="265" y="620" />
-              <mxPoint x="460" y="620" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e8" value="TCP&#xa;app.ibps.nb:12222" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="jb-gaps" target="jb-pboc-gw">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1125" y="620" />
-              <mxPoint x="1330" y="620" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- 新Java → 人行网关 (同侧，虚线) -->
-        <mxCell id="e9" value="星云发现&#xa;ibps-pboc-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="yz-java" target="yz-pboc-gw">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="675" y="620" />
-              <mxPoint x="460" y="620" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e10" value="星云发现&#xa;ibps-pboc-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="jb-java" target="jb-pboc-gw">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1535" y="620" />
-              <mxPoint x="1330" y="620" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- 人行网关 → 行内前置机 (同侧) -->
-        <mxCell id="e11" value="TCP探测路由&#xa;写入MQ (端口1424)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="yz-pboc-gw" target="yz-preq">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e12" value="TCP探测路由&#xa;写入MQ (端口1424)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;labelBackgroundColor=#ffffff" edge="1" parent="1" source="jb-pboc-gw" target="jb-preq">
+        <!-- 鄞州渠道网关区 → 鄞州应用处理层-老架构（TCP 12010） -->
+        <mxCell id="conn-2-3-yz-old" value="&lt;b&gt;TCP 12010&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.203;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff;edgeStyle=orthogonalEdgeStyle" edge="1" source="layer2-yz-bg" target="layer3-yz-bg" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- 行内前置机 → 人行前置机 -->
-        <mxCell id="e13" value="IBM MQ&#xa;报文流转" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#cc0000;fontSize=9;labelBackgroundColor=#ffffff;fontStyle=1" edge="1" parent="1" source="yz-preq" target="pboc-preq">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e14" value="IBM MQ&#xa;报文流转" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#cc0000;fontSize=9;labelBackgroundColor=#ffffff;fontStyle=1" edge="1" parent="1" source="jb-preq" target="pboc-preq">
+        <!-- 鄞州渠道网关区 → 鄞州应用处理层-新架构（星云路由） -->
+        <mxCell id="conn-2-3-yz-new" value="&lt;b&gt;星云路由&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;dashed=1;dashPattern=8 8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.686;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#82b366;labelBackgroundColor=#ffffff;edgeStyle=orthogonalEdgeStyle" edge="1" source="layer2-yz-bg" target="layer3-yz-bg" parent="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
+        <!-- 江北渠道网关区 → 江北应用处理层-老架构（TCP 12010） -->
+        <mxCell id="conn-2-3-jb-old" value="&lt;b&gt;TCP 12010&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.203;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff;edgeStyle=orthogonalEdgeStyle" edge="1" source="layer2-jb-bg" target="layer3-jb-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 江北渠道网关区 → 江北应用处理层-新架构（星云路由） -->
+        <mxCell id="conn-2-3-jb-new" value="&lt;b&gt;星云路由&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;dashed=1;dashPattern=8 8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.699;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#82b366;labelBackgroundColor=#ffffff;edgeStyle=orthogonalEdgeStyle" edge="1" source="layer2-jb-bg" target="layer3-jb-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务8.3：第三层 → 第四层 连线（应用处理层 → 人行网关层） ====== -->
+
+        <!-- 鄞州应用处理层 → 鄞州人行网关层（TCP 12222 + 星云路由） -->
+        <mxCell id="conn-3-4-yz" value="&lt;b&gt;TCP 12222 + 星云路由&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff" edge="1" source="layer3-yz-bg" target="layer4-yz-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 江北应用处理层 → 江北人行网关层（TCP 12222 + 星云路由） -->
+        <mxCell id="conn-3-4-jb" value="&lt;b&gt;TCP 12222 + 星云路由&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff" edge="1" source="layer3-jb-bg" target="layer4-jb-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务8.4：第四层 → 第五层 连线（人行网关层 → 前置机层） ====== -->
+
+        <!-- 鄞州人行网关层 → 鄞州前置机层（TCP 1424） -->
+        <mxCell id="conn-4-5-yz" value="&lt;b&gt;TCP 1424&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff" edge="1" source="layer4-yz-bg" target="layer5-yz-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 江北人行网关层 → 江北前置机层（TCP 1424） -->
+        <mxCell id="conn-4-5-jb" value="&lt;b&gt;TCP 1424&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff" edge="1" source="layer4-jb-bg" target="layer5-jb-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 任务8.5：第五层 → 第六层 连线（折线，垂直连接） ====== -->
+
+        <!-- 鄞州前置机层 → 人行前置机（IBM MQ 垂直折线） -->
+        <mxCell id="conn-5-6-yz" value="&lt;b&gt;IBM MQ&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2458;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1" edge="1" source="layer5-yz-bg" target="layer6-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 江北前置机层 → 人行前置机（IBM MQ 垂直折线） -->
+        <mxCell id="conn-5-6-jb" value="&lt;b&gt;IBM MQ&lt;/b&gt;" style="endArrow=classic;html=1;strokeColor=#cc0000;strokeWidth=2;fontSize=10;fontColor=#cc0000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.7583;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1" edge="1" source="layer5-jb-bg" target="layer6-bg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
 
       </root>
     </mxGraphModel>
